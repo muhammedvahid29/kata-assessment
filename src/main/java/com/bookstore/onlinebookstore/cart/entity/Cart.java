@@ -17,6 +17,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
+import java.util.ArrayList;
 
 @Entity
 @Table(name="cart")
@@ -38,5 +39,7 @@ public class Cart {
 	@OneToMany(cascade = CascadeType.ALL,
 			mappedBy = "cart",
 			orphanRemoval = true)
-	List<CartItem> items;
+	@Builder.Default
+	List<CartItem> items = new ArrayList<>();	
+	
 }
