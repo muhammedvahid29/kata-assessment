@@ -9,7 +9,6 @@ import com.bookstore.onlinebookstore.cart.dto.UpdateCartItemRequest;
 import com.bookstore.onlinebookstore.cart.entity.Cart;
 import com.bookstore.onlinebookstore.cart.repository.CartRepository;
 import com.bookstore.onlinebookstore.exception.ResourceNotFoundException;
-import com.bookstore.onlinebookstore.exception.UserNotFoundException;
 
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -56,7 +55,7 @@ public class CartServiceImpl implements CartService {
 	
 	
 	private CartResponse toresponse(Cart cart) {
-		return new CartResponse(cart.getId(),cart.getItems(),cart.get);
+		return null;
 	}
 
 }
