@@ -16,7 +16,7 @@ public class GlobalExecptionHandler {
 	public ResponseEntity<ErrorResponse> handleNotFound(
 			ResourceNotFoundException ex){
 		 var response = new ErrorResponse(
-				 LocalDateTime.now(),
+				 LocalDateTime.now().withNano(0),
 				 404,
 				 "NOT_FOUND",
 				 ex.getMessage()
@@ -42,7 +42,7 @@ public class GlobalExecptionHandler {
 							));
 		
 		var response = new ValidationErrorResponse(
-				LocalDateTime.now(),
+				LocalDateTime.now().withNano(0),
 				400,
 				"VALIDATION_FAILED",
 				erros);
@@ -51,5 +51,19 @@ public class GlobalExecptionHandler {
 				.badRequest()
 				.body(response);
 	}
-			
+	
+	@ExceptionHandler(IllegalArgumentException.class)
+	public ResponseEntity<ErrorResponse> handleIllegalArgument(IllegalArgumentException ex){
+		var response = new ErrorResponse(
+				LocalDateTime.now().withNano(0),
+				400,
+				"BAD_REQUEST",
+				ex.getMessage()
+		);
+		
+		return ResponseEntity
+				.badRequest()
+				.body(response);
+	}
+	
 }

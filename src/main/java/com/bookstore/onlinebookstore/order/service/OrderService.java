@@ -3,7 +3,6 @@ package com.bookstore.onlinebookstore.order.service;
 import java.util.List;
 
 import com.bookstore.onlinebookstore.order.dto.OrderResponse;
-import com.bookstore.onlinebookstore.order.entity.OrderItem;
 
 public interface OrderService {
 	OrderResponse placeOrder(Long userId);
@@ -13,5 +12,5 @@ public interface OrderService {
 				Long orderId
 			);
 	
-	List<OrderItem> getMyOrders(Long userId);
+	List<OrderResponse> getMyOrders(Long userId);
 }

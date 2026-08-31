@@ -22,7 +22,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
 @RestController
-@RequestMapping("/api/carts")
+@RequestMapping("/api/cart")
 @FieldDefaults(level = AccessLevel.PRIVATE,makeFinal = true)
 @RequiredArgsConstructor
 public class CartController {

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,6 +29,7 @@ import lombok.experimental.FieldDefaults;
 public class BookController {
      BookService bookService;
      
+     @PreAuthorize("hasRole('ADMIN')")
      @PostMapping
      public ResponseEntity<BookResponse> createBook(@Valid @RequestBody BookRequest bookRequest){
     	 return ResponseEntity
@@ -35,6 +37,7 @@ public class BookController {
     			 .body(bookService.createBook(bookRequest));
      }
      
+     @PreAuthorize("hasAnyRole('ADMN', 'CUSTOMER')")
      @GetMapping
      public ResponseEntity<List<BookResponse>> getAllBooks() {
     	 return ResponseEntity.ok(
@@ -42,6 +45,7 @@ public class BookController {
     			 );
      }
      
+     @PreAuthorize("hasAnyRole('ADMN', 'CUSTOMER')")
      @GetMapping("/{id}")
      public ResponseEntity<BookResponse> getBookById(
     		   @PathVariable Long id
@@ -50,6 +54,7 @@ public class BookController {
     	 return ResponseEntity.ok(bookService.getBookById(id));
      }
      
+     @PreAuthorize("hasRole('ADMIN')")
      @DeleteMapping("/{id}")
      public ResponseEntity<Void> deleteBook(@PathVariable Long id) {
     	 bookService.deleteBook(id);

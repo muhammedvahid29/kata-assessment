@@ -7,5 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.bookstore.onlinebookstore.cart.entity.CartItem;
 
 public interface CartItemRepository extends JpaRepository<CartItem, Long>{
-	Optional<CartItem> findByCartIdAndBookId(Long cartId, Long bookId);
+	Optional<CartItem> findByCartIdAndBookId(
+			Long cartId,
+			Long bookId
+	);
 }

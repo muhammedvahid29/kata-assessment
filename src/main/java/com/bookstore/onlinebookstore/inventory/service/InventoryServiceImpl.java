@@ -65,7 +65,7 @@ public class InventoryServiceImpl implements InventoryService {
 	}
 
 	@Override
-	public void decreaseSTock(Long bookId, int quantity) {
+	public void decreaseStock(Long bookId, int quantity) {
 		validateQuantity(quantity);
 		
 		var inventory = findByBookId(bookId);

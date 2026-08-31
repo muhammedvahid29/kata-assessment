@@ -3,8 +3,6 @@ package com.bookstore.onlinebookstore.order.dto;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
-
-import com.bookstore.onlinebookstore.order.entity.OrderItem;
 import com.bookstore.onlinebookstore.order.enums.OrderStatus;
 
 public record OrderResponse(
@@ -13,7 +11,7 @@ public record OrderResponse(
 			OrderStatus status,
 			BigDecimal totalAmount,
 			LocalDateTime createdAt,
-			List<OrderItem> items
+			List<OrderItemResponse> items
 		) {
 
 }

@@ -8,5 +8,5 @@ public interface InventoryService {
 	InventoryResponse getInventoryByBookId(Long id);
 	InventoryResponse updateInventory(Long bookId,InventoryRequest inventoryRequest);
 	void increaseStock(Long bookId,int quantity);
-	void decreaseSTock(Long bookId,int quantity);
+	void decreaseStock(Long bookId,int quantity);
 }

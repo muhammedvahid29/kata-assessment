@@ -44,6 +44,20 @@ public class BookServiceImpl implements BookService {
 		
 		return toResponse(book);
 	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<BookResponse> getBooksByIds(List<Long> ids) {
+        return bookRepository.findAllById(ids)
+        				.stream()
+        				.map(book -> { 
+        					return new BookResponse(
+        							book.getBookId(),
+        							book.getTitle(),
+        							book.getAuthor(),
+        							book.getPrice());
+        				}).toList();
+	}
 
 	@Override
 	@Transactional(readOnly = true)

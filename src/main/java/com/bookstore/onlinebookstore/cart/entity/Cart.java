@@ -40,6 +40,6 @@ public class Cart {
 			mappedBy = "cart",
 			orphanRemoval = true)
 	@Builder.Default
-	List<CartItem> items = new ArrayList<>();	
+	List<CartItem> items = new ArrayList<>();
 	
 }
