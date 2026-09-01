@@ -24,7 +24,7 @@ The Online Book Store Application follows a modular monolith architecture.
 
 
 
-!\[Online Book Store Architecture](docs/online-bookstore-archictecture.png)
+!\[Online Book Store Architecture](docs/archictecture.png)
 
 ### Why modular monolith?
 
