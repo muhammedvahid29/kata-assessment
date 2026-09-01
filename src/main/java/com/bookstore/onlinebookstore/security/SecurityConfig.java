@@ -60,6 +60,13 @@ public class SecurityConfig {
 				).permitAll()
 				
 				.requestMatchers(
+						"/swagger-ui.html",
+				        "/swagger-ui/**",
+				        "/v3/api-docs",
+				        "/v3/api-docs/**"
+				).permitAll()
+				
+				.requestMatchers(
 						"/api/inventory/**"	
 				).hasRole("ADMIN")
 				
@@ -83,7 +90,7 @@ public class SecurityConfig {
 		                		LocalDateTime.now().withNano(0),
 		                        401,
 		                        "UNAUTHORIZED",
-		                        "Authentication is required"
+		                        "AUthentication required/Bad credentials provided"
 		                );
 
 		                response.getWriter().write(

@@ -80,18 +80,18 @@ public class GlobalExecptionHandler {
 				.body(response);
 	}
 	
-//	@ExceptionHandler(Exception.class)
-//	public ResponseEntity<ErrorResponse> handleInternalError(Exception ex){
-//		var response = new ErrorResponse(
-//					LocalDateTime.now().withNano(0),
-//					HttpStatus.INTERNAL_SERVER_ERROR.value(),
-//					"INTERNAL_SERVER_ERROR",
-//					"An unexpected error occurred"
-//		);
-//		
-//		return ResponseEntity
-//				.internalServerError()
-//				.body(response);
-//	}
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<ErrorResponse> handleInternalError(Exception ex){
+		var response = new ErrorResponse(
+					LocalDateTime.now().withNano(0),
+					HttpStatus.INTERNAL_SERVER_ERROR.value(),
+					"INTERNAL_SERVER_ERROR",
+					"An unexpected error occurred"
+		);
+		
+		return ResponseEntity
+				.internalServerError()
+				.body(response);
+	}
 	
 }
