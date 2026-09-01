@@ -20,46 +20,11 @@ rather than through network-based microservices.
 
 ## 2\. Architecture
 
-The application is a modular monolith.
+The Online Book Store Application follows a modular monolith architecture.
 
-``` text
-                         ┌───────────────────────┐
-                         │       Postman /       │
-                         │       Frontend        │
-                         └───────────┬───────────┘
-                                     │ HTTP/REST
-                                     ▼
-                    ┌────────────────────────────────┐
-                    │        Spring Boot App         │
-                    │                                │
-                    │  ┌──────────────┐              │
-                    │  │ Auth Module  │              │
-                    │  └──────┬───────┘              │
-                    │         │                       │
-                    │  ┌──────▼───────┐              │
-                    │  │ Book Module  │              │
-                    │  └──────┬───────┘              │
-                    │         │                       │
-                    │  ┌──────▼──────────┐           │
-                    │  │ Inventory Module│           │
-                    │  └──────┬──────────┘           │
-                    │         │                       │
-                    │  ┌──────▼───────┐              │
-                    │  │ Cart Module  │              │
-                    │  └──────┬───────┘              │
-                    │         │                       │
-                    │  ┌──────▼───────┐              │
-                    │  │ Order Module │              │
-                    │  └──────────────┘              │
-                    │                                │
-                    │       Spring Security          │
-                    └──────────────┬─────────────────┘
-                                   │
-                                   ▼
-                           ┌───────────────┐
-                           │   Database    │
-                           └───────────────┘
-```
+
+
+!\[Online Book Store Architecture](docs/online-bookstore-archictecture.png)
 
 ### Why modular monolith?
 
