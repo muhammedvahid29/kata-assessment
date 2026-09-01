@@ -496,17 +496,27 @@ mvn -version
 
 Update the project's database configuration, for example:
 
-``` properties
-spring.datasource.url=jdbc:postgresql://localhost:5432/bookstore
-spring.datasource.username=YOUR\\\_USERNAME
-spring.datasource.password=YOUR\\\_PASSWORD
+The application is already configured with an \*\*H2 in-memory database\*\*, so no external database setup is required for local testing.
 
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=false
+
+
+Simply start the Spring Boot application. The required database schema and tables will be created automatically based on the JPA entities.
+
+
+
+\### View H2 Database
+
+
+
+To view the database schema, tables, and data, open:
+
+
+
+``` text
+
+http://localhost:8080/h2-console
+
 ```
-
-Use the actual database configuration committed/documented by the
-project. Do not commit production passwords or secrets.
 
 ### Build
 
@@ -578,18 +588,23 @@ Save the returned user ID if needed for debugging.
 Normal registration must not allow the client to select `ADMIN`, because
 that would allow anyone to create an administrator account.
 
-For local/demo testing, create the administrator using the project's
-controlled seed/database initialization mechanism.
+A default administrator account is automatically created when the application starts, \*\*only if no ADMIN user already exists\*\* in the database.
 
-Example logical data:
+
+
+Use the following credentials for admin-level API testing:
+
+
 
 ``` text
-email: admin@gmail.com
-password: password123
-role: ADMIN
-```
 
-The stored password must be a BCrypt hash.
+Username: admin@onlinebookstore.com
+
+Password: admin123
+
+Role:     ADMIN
+
+```
 
 ### Step 3 - Create a book as ADMIN
 
@@ -598,8 +613,8 @@ Use Postman:
 ``` text
 Authorization → Basic Auth
 
-Username: admin@gmail.com
-Password: password123
+Username: admin@onlinebookstore.com
+Password: admin123
 ```
 
 Then call the Book create endpoint implemented by the repository, for

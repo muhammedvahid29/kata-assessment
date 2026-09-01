@@ -66,4 +66,32 @@ public class GlobalExecptionHandler {
 				.body(response);
 	}
 	
+	@ExceptionHandler(InsufficientStockException.class)
+	public ResponseEntity<ErrorResponse> handleInsufficientStock(InsufficientStockException ex){
+		var response = new ErrorResponse(
+				LocalDateTime.now().withNano(0),
+				HttpStatus.CONFLICT.value(),
+				"INSUFFICIENT_STOCK",
+				ex.getMessage()
+		);
+		
+		return ResponseEntity
+				.status(HttpStatus.CONFLICT)
+				.body(response);
+	}
+	
+//	@ExceptionHandler(Exception.class)
+//	public ResponseEntity<ErrorResponse> handleInternalError(Exception ex){
+//		var response = new ErrorResponse(
+//					LocalDateTime.now().withNano(0),
+//					HttpStatus.INTERNAL_SERVER_ERROR.value(),
+//					"INTERNAL_SERVER_ERROR",
+//					"An unexpected error occurred"
+//		);
+//		
+//		return ResponseEntity
+//				.internalServerError()
+//				.body(response);
+//	}
+	
 }

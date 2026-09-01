@@ -47,13 +47,12 @@ public class InventoryController {
 				);
 	}
 	
-	@PutMapping("/{bookId}")
+	@PutMapping
 	public ResponseEntity<InventoryResponse> updateInventory(
-				@PathVariable Long bookId,
 				@Valid @RequestBody InventoryRequest inventoryRequest) {
 		return ResponseEntity.ok(
 					inventoryService.updateInventory(
-							bookId, 
+							inventoryRequest.bookId(), 
 							inventoryRequest
 					)
 				);

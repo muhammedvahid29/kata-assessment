@@ -3,6 +3,7 @@ package com.bookstore.onlinebookstore.inventory.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.bookstore.onlinebookstore.book.service.BookService;
 import com.bookstore.onlinebookstore.exception.InsufficientStockException;
 import com.bookstore.onlinebookstore.exception.ResourceNotFoundException;
 import com.bookstore.onlinebookstore.inventory.dto.InventoryRequest;
@@ -21,10 +22,12 @@ import lombok.experimental.FieldDefaults;
 public class InventoryServiceImpl implements InventoryService {
     
 	InventoryRepository inventoryRepository;
+	BookService bookService;
 	
 	@Override
 	public InventoryResponse createInventory(InventoryRequest inventoryRequest) {
 		
+		bookService.getBookById(inventoryRequest.bookId());
 		if(inventoryRepository.existsByBookId(inventoryRequest.bookId())) {
 			throw new IllegalArgumentException(
 						"Inventory already exists for book: " + inventoryRequest.bookId()

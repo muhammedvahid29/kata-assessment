@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,7 +38,7 @@ public class BookController {
     			 .body(bookService.createBook(bookRequest));
      }
      
-     @PreAuthorize("hasAnyRole('ADMN', 'CUSTOMER')")
+     @PreAuthorize("hasAnyRole('ADMIN', 'CUSTOMER')")
      @GetMapping
      public ResponseEntity<List<BookResponse>> getAllBooks() {
     	 return ResponseEntity.ok(
@@ -45,13 +46,24 @@ public class BookController {
     			 );
      }
      
-     @PreAuthorize("hasAnyRole('ADMN', 'CUSTOMER')")
+     @PreAuthorize("hasAnyRole('ADMIN', 'CUSTOMER')")
      @GetMapping("/{id}")
      public ResponseEntity<BookResponse> getBookById(
     		   @PathVariable Long id
     		 ){
     	 
     	 return ResponseEntity.ok(bookService.getBookById(id));
+     }
+     
+     @PreAuthorize("hasRole('ADMIN')")
+     @PutMapping("/{id}")
+     public ResponseEntity<BookResponse> updateBook(
+             @PathVariable Long id,
+             @Valid @RequestBody BookRequest bookRequest) {
+
+         return ResponseEntity.ok(
+                 bookService.updateBook(id, bookRequest)
+         );
      }
      
      @PreAuthorize("hasRole('ADMIN')")
