@@ -230,6 +230,8 @@ Conceptually:
                           Book management
 ```
 
+``` text
+
 Typical access rules:                     
 
 | API Area                       | CUSTOMER | ADMIN |
@@ -247,6 +249,8 @@ Typical access rules:
 | Orders                         |   Yes    |  No   |
 
 | Inventory management           |    No    |  Yes  |
+
+```
 
 ## 7\. Password Security
 
@@ -312,7 +316,7 @@ Book
  │
  │ 1
  │
- │ \\\*
+ │ 1
  ▼
 Inventory
 
@@ -439,7 +443,7 @@ Install:
 
 * Java 17
 * Maven
-* Database configured in `application.properties` / `application.yml`
+* Database configured in `application.properties`
 * Git
 * Postman
 
@@ -858,6 +862,8 @@ repository.
 
 Typical operations:
 
+```text
+
 Method   Endpoint            Access
 
 \---
@@ -868,7 +874,11 @@ POST     `/api/books`        ADMIN
 PUT      `/api/books/{id}`   ADMIN
 DELETE   `/api/books/{id}`   ADMIN
 
+```
+
 ### Inventory
+
+```text
 
 Method   Endpoint                    Access
 
@@ -876,12 +886,16 @@ Method   Endpoint                    Access
 
 GET      `/api/inventory/{bookId}`   ADMIN
 POST     `/api/inventory`            ADMIN
-PUT      `/api/inventory/{bookId}`   ADMIN
+PUT      `/api/inventory`            ADMIN
+
+```
 
 Use the exact endpoint mappings present in the repository if they
 differ.
 
 ### Cart
+
+```text
 
 Method   Endpoint                     Access
 
@@ -893,7 +907,11 @@ PUT      `/api/cart/items/{bookId}`   CUSTOMER
 DELETE   `/api/cart/items/{bookId}`   CUSTOMER
 DELETE   `/api/cart`                  CUSTOMER
 
+```
+
 ### Orders
+
+```text
 
 Method   Endpoint                  Access
 
@@ -902,6 +920,8 @@ Method   Endpoint                  Access
 POST     `/api/orders`             CUSTOMER
 GET      `/api/orders/{orderId}`   CUSTOMER
 GET      `/api/orders`             CUSTOMER
+
+```
 
 The exact Order endpoints should match the controller mappings in the
 repository.

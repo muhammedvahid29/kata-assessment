@@ -70,13 +70,13 @@ public class GlobalExecptionHandler {
 	public ResponseEntity<ErrorResponse> handleInsufficientStock(InsufficientStockException ex){
 		var response = new ErrorResponse(
 				LocalDateTime.now().withNano(0),
-				HttpStatus.CONFLICT.value(),
+				HttpStatus.UNPROCESSABLE_CONTENT.value(),
 				"INSUFFICIENT_STOCK",
 				ex.getMessage()
 		);
 		
 		return ResponseEntity
-				.status(HttpStatus.CONFLICT)
+				.status(HttpStatus.UNPROCESSABLE_CONTENT)
 				.body(response);
 	}
 	

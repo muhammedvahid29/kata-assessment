@@ -75,7 +75,7 @@ public class InventoryServiceImpl implements InventoryService {
 		
 		if(inventory.getQuantity() < quantity) {
 			throw new InsufficientStockException(
-					  "Insufficient stock for book: "+ bookId
+					  "Insufficient stock for book id: "+ bookId
 					);
 		}
 		
