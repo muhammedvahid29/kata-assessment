@@ -8,7 +8,7 @@ public record InventoryRequest(
 			Long bookId,
 			
 			@NotNull(message = "Quantity is required")
-		    @Min(value = 0,message = "Quantity cannot be negative")
+		    @Min(value = 1,message = "At least one quantity is required")
 			Integer quantity
 		) {
 
