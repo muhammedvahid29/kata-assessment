@@ -24,9 +24,7 @@ The Online Book Store Application follows a modular monolith architecture.
 
 
 
-!\[Online Book Store Architecture](https://raw.githubusercontent.com/muhammedvahid29/kata-assessment/main/docs/architecture.png)
-
-
+<img src="./docs/architecture.png" alt="Online Book Store Architecture" width="100%">
 
 ### Why modular monolith?
 
